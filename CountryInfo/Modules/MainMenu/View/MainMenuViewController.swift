@@ -11,26 +11,50 @@ class MainMenuViewController: UIViewController {
 
     // MARK: - IBOutlets
     @IBOutlet var backgroundView: UIView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var mainMenuImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var aboutLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        // Do any additional setup after loading the view.
-        tableView.dataSource = self
+        
     }
 
     func setupViews() {
         backgroundView.backgroundColor = UIColor.lightSeaGreen
-    }
-}
-
-extension MainMenuViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        setupStartButton()
+        setupImage()
+        setupTitle()
+        setupDescription()
+        setupAbout()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+    func setupStartButton() {
+        startButton.setTitle("Try WorldFinder!", for: .normal)
+        startButton.setTitleColor(.white, for: .normal)
+        startButton.backgroundColor = UIColor.darkSeaGreen
+        startButton.layer.cornerRadius = 10
+    }
+    
+    func setupImage() {
+        mainMenuImage.image = UIImage(named: "globe")
+    }
+    
+    func setupTitle() {
+        titleLabel.textColor = .white
+        titleLabel.text = "Discover the world."
+    }
+    
+    func setupDescription() {
+        descriptionLabel.textColor = .white
+        descriptionLabel.text = "Find out more about all the countries in the world."
+    }
+    
+    func setupAbout() {
+        aboutLabel.textColor = .white
+        aboutLabel.text = "about the app >"
     }
 }
