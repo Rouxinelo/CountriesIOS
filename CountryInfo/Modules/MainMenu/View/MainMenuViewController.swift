@@ -12,7 +12,6 @@ class MainMenuViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var startButton: UIButton!
-    @IBOutlet weak var mainMenuImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
@@ -26,7 +25,6 @@ class MainMenuViewController: UIViewController {
     func setupViews() {
         backgroundView.backgroundColor = UIColor.lightSeaGreen
         setupStartButton()
-        setupImage()
         setupTitle()
         setupDescription()
         setupAbout()
@@ -39,13 +37,9 @@ class MainMenuViewController: UIViewController {
         startButton.layer.cornerRadius = 10
     }
     
-    func setupImage() {
-        mainMenuImage.image = UIImage(named: "globe")
-    }
-    
     func setupTitle() {
         titleLabel.textColor = .white
-        titleLabel.text = "Discover the world."
+        titleLabel.text = "Discover\nthe world."
     }
     
     func setupDescription() {
