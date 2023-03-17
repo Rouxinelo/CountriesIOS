@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B085AC229C51CF000A7A59A /* CountryMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B085AC029C51CF000A7A59A /* CountryMenuViewController.swift */; };
+		6B085AC329C51CF000A7A59A /* CountryMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B085AC129C51CF000A7A59A /* CountryMenuViewController.xib */; };
 		6BA79B1A29C3C8CF0010DB6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B1929C3C8CF0010DB6C /* AppDelegate.swift */; };
 		6BA79B1C29C3C8CF0010DB6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B1B29C3C8CF0010DB6C /* SceneDelegate.swift */; };
 		6BA79B2329C3C8CF0010DB6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BA79B2229C3C8CF0010DB6C /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B085AC029C51CF000A7A59A /* CountryMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryMenuViewController.swift; sourceTree = "<group>"; };
+		6B085AC129C51CF000A7A59A /* CountryMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryMenuViewController.xib; sourceTree = "<group>"; };
 		6BA79B1629C3C8CF0010DB6C /* CountryInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA79B1929C3C8CF0010DB6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BA79B1B29C3C8CF0010DB6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B085ABE29C51CB100A7A59A /* CountryMenu */ = {
+			isa = PBXGroup;
+			children = (
+				6B085ABF29C51CDA00A7A59A /* View */,
+			);
+			path = CountryMenu;
+			sourceTree = "<group>";
+		};
+		6B085ABF29C51CDA00A7A59A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6B085AC029C51CF000A7A59A /* CountryMenuViewController.swift */,
+				6B085AC129C51CF000A7A59A /* CountryMenuViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6BA79B0D29C3C8CF0010DB6C = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +160,7 @@
 		6BA79B4929C3CBCF0010DB6C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6B085ABE29C51CB100A7A59A /* CountryMenu */,
 				6BA79B4A29C3CBDC0010DB6C /* MainMenu */,
 			);
 			path = Modules;
@@ -285,6 +307,7 @@
 			files = (
 				6BA79B2629C3C8CF0010DB6C /* LaunchScreen.storyboard in Resources */,
 				6BA79B4F29C3CC140010DB6C /* MainMenuViewController.xib in Resources */,
+				6B085AC329C51CF000A7A59A /* CountryMenuViewController.xib in Resources */,
 				6BA79B2329C3C8CF0010DB6C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +335,7 @@
 			files = (
 				6BA79B5629C3CE120010DB6C /* ModuleCoordinator.swift in Sources */,
 				6BA79B5929C3D0920010DB6C /* UIColor.swift in Sources */,
+				6B085AC229C51CF000A7A59A /* CountryMenuViewController.swift in Sources */,
 				6BA79B5129C3CC340010DB6C /* MainMenuViewModel.swift in Sources */,
 				6BA79B5329C3CCDE0010DB6C /* MainMenuCoordinator.swift in Sources */,
 				6BA79B4E29C3CC140010DB6C /* MainMenuViewController.swift in Sources */,
