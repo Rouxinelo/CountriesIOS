@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,6 +12,7 @@
                 <outlet property="aboutLabel" destination="hlR-9M-raS" id="8jp-oc-tf5"/>
                 <outlet property="backgroundView" destination="i5M-Pr-FkT" id="d3Q-bw-Hcr"/>
                 <outlet property="descriptionLabel" destination="Bhn-ah-HL2" id="GQr-Fs-1Kc"/>
+                <outlet property="globeImage" destination="ePP-Th-yf5" id="0lk-3Y-RD7"/>
                 <outlet property="startButton" destination="UU6-kB-zlX" id="a4g-Qo-ItR"/>
                 <outlet property="titleLabel" destination="6Og-sj-NSE" id="o75-zy-vmq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -19,11 +20,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+            <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="z4c-wo-EBg">
-                    <rect key="frame" x="16" y="1170" width="908" height="146"/>
+                    <rect key="frame" x="16" y="722" width="314" height="146"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="YQm-Jt-opV">
                             <rect key="frame" x="0.0" y="0.0" width="94" height="96"/>
@@ -55,7 +56,7 @@
                     </subviews>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlR-9M-raS">
-                    <rect key="frame" x="16" y="24" width="1008" height="20"/>
+                    <rect key="frame" x="16" y="59" width="414" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="6DP-55-kM1"/>
                     </constraints>
@@ -63,6 +64,13 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-Th-yf5">
+                    <rect key="frame" x="164" y="341" width="250" height="250"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="250" id="FE3-fz-pml"/>
+                        <constraint firstAttribute="width" constant="250" id="syR-Lc-dLc"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <constraints>
@@ -70,6 +78,8 @@
                 <constraint firstItem="z4c-wo-EBg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="7hx-uQ-4Tb"/>
                 <constraint firstItem="hlR-9M-raS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8QZ-rB-0Ii"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hlR-9M-raS" secondAttribute="trailing" id="Dla-Nl-OtP"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ePP-Th-yf5" secondAttribute="trailing" constant="16" id="Yc0-bc-LCR"/>
+                <constraint firstItem="ePP-Th-yf5" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="cMf-pw-klb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="z4c-wo-EBg" secondAttribute="bottom" constant="30" id="twU-6I-QPz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="z4c-wo-EBg" secondAttribute="trailing" constant="100" id="yBb-Au-XfT"/>
             </constraints>

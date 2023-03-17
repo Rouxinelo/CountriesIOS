@@ -14,6 +14,7 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var globeImage: UIImageView!
     @IBOutlet weak var aboutLabel: UILabel!
     
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class MainMenuViewController: UIViewController {
         setupTitle()
         setupDescription()
         setupAbout()
+        setupImage()
     }
     
     func setupStartButton() {
@@ -50,5 +52,10 @@ class MainMenuViewController: UIViewController {
     func setupAbout() {
         aboutLabel.textColor = .white
         aboutLabel.text = "about the app >"
+        aboutLabel.sizeToFit()
+    }
+    
+    func setupImage() {
+        globeImage.image = UIImage(named: "globe")
     }
 }
