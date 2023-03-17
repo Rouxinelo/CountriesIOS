@@ -9,7 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainMenuViewController" customModule="CountryInfo" customModuleProvider="target">
             <connections>
-                <outlet property="aboutLabel" destination="hlR-9M-raS" id="8jp-oc-tf5"/>
                 <outlet property="backgroundView" destination="i5M-Pr-FkT" id="d3Q-bw-Hcr"/>
                 <outlet property="descriptionLabel" destination="Bhn-ah-HL2" id="GQr-Fs-1Kc"/>
                 <outlet property="globeImage" destination="ePP-Th-yf5" id="0lk-3Y-RD7"/>
@@ -52,18 +51,12 @@
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            <connections>
+                                <action selector="goToCountryMenu:" destination="-1" eventType="touchUpInside" id="U43-iR-CwI"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlR-9M-raS">
-                    <rect key="frame" x="16" y="59" width="414" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="6DP-55-kM1"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-Th-yf5">
                     <rect key="frame" x="164" y="341" width="250" height="250"/>
                     <constraints>
@@ -73,11 +66,9 @@
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="hlR-9M-raS" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="08b-AA-fGH"/>
                 <constraint firstItem="z4c-wo-EBg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="7hx-uQ-4Tb"/>
-                <constraint firstItem="hlR-9M-raS" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="8QZ-rB-0Ii"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hlR-9M-raS" secondAttribute="trailing" id="Dla-Nl-OtP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ePP-Th-yf5" secondAttribute="trailing" constant="16" id="Yc0-bc-LCR"/>
                 <constraint firstItem="ePP-Th-yf5" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="cMf-pw-klb"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="z4c-wo-EBg" secondAttribute="bottom" constant="30" id="twU-6I-QPz"/>
