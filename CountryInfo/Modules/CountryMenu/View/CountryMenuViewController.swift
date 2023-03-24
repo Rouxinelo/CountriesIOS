@@ -9,14 +9,15 @@ import UIKit
 
 class CountryMenuViewController: UIViewController {
 
-    // MARK: - IBOutlets
+    // MARK: IBOutlets
     
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var countryTableView: UITableView!
     @IBOutlet weak var countrySearchBar: UISearchBar!
     
-    // MARK: - Functions
+    // MARK: Functions
     var hiddenSections = Set<String>()
+    var viewModel: CountryMenuViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,10 @@ class CountryMenuViewController: UIViewController {
         countryTableView.dataSource = self
         countryTableView.delegate = self
         setupViews()
+        
+        if let viewModel = viewModel {
+            viewModel.getCountryData()
+        }
     }
 
     func setupViews() {

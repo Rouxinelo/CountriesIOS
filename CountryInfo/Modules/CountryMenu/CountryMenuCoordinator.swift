@@ -11,7 +11,7 @@ import UIKit
 class CountryMenuCoordinator: ModuleCoordinator {
     func start() -> UIViewController {
         let vc = CountryMenuViewController()
-        
+        vc.viewModel = CountryMenuViewModel(networkLayer: CountryMenuNetworkLayer())
         return vc
     }
 }
