@@ -10,6 +10,8 @@ import UIKit
 class CountryMenuViewController: UIViewController {
 
     @IBOutlet var backgroundView: UIView!
+    @IBOutlet weak var countryTableView: UITableView!
+    @IBOutlet weak var countrySearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,5 +25,4 @@ class CountryMenuViewController: UIViewController {
     func setupBackgroundView() {
         backgroundView.backgroundColor = UIColor.lightSeaGreen
     }
-
 }

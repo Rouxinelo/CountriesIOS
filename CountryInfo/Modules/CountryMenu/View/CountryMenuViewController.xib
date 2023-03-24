@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CountryMenuViewController" customModule="CountryInfo" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundView" destination="i5M-Pr-FkT" id="HVu-yb-cJT"/>
+                <outlet property="countrySearchBar" destination="N9x-SS-FWE" id="zmS-9e-xWh"/>
+                <outlet property="countryTableView" destination="7Hj-yy-Rxp" id="mxs-3R-PtI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,8 +20,33 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="N9x-SS-FWE">
+                    <rect key="frame" x="8" y="59" width="377" height="56"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="4OS-Km-fhB"/>
+                    </connections>
+                </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7Hj-yy-Rxp">
+                    <rect key="frame" x="8" y="123" width="377" height="695"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="7Hj-yy-Rxp" firstAttribute="top" secondItem="N9x-SS-FWE" secondAttribute="bottom" constant="8" id="5XA-yz-lhA"/>
+                <constraint firstItem="N9x-SS-FWE" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-8" id="6s7-ge-In8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7Hj-yy-Rxp" secondAttribute="trailing" constant="8" id="Bsg-ia-QYe"/>
+                <constraint firstItem="N9x-SS-FWE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="JNX-hU-pS9"/>
+                <constraint firstItem="7Hj-yy-Rxp" firstAttribute="top" secondItem="N9x-SS-FWE" secondAttribute="bottom" constant="8" id="LR6-hM-TaF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7Hj-yy-Rxp" secondAttribute="bottom" id="QwX-jI-l3x"/>
+                <constraint firstItem="7Hj-yy-Rxp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="aks-gE-Mbf"/>
+                <constraint firstItem="N9x-SS-FWE" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="nfs-6X-hQy"/>
+            </constraints>
             <point key="canvasLocation" x="-8" y="20"/>
         </view>
     </objects>
