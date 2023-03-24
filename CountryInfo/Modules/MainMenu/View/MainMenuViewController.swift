@@ -15,7 +15,6 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var globeImage: UIImageView!
-    @IBOutlet weak var aboutLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +22,8 @@ class MainMenuViewController: UIViewController {
         
     }
 
+    // MARK: View setup
+    
     func setupViews() {
         backgroundView.backgroundColor = UIColor.lightSeaGreen
         setupStartButton()
@@ -50,12 +51,23 @@ class MainMenuViewController: UIViewController {
     }
     
     func setupAbout() {
-        aboutLabel.textColor = .white
-        aboutLabel.text = "about the app >"
-        aboutLabel.sizeToFit()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "About the app ", style: .plain, target: self, action: #selector(goToAbout))
+        navigationController?.navigationBar.tintColor = .white
     }
     
     func setupImage() {
         globeImage.image = UIImage(named: "globe")
+    }
+    
+    // MARK: Navigation
+    
+    @IBAction func goToCountryMenu(_ sender: Any) {
+        if let navigationController = self.navigationController {
+            let vc = CountryMenuCoordinator().start()
+            navigationController.pushViewController(vc, animated: true)
+        }
+    }
+    
+    @objc func goToAbout() {
     }
 }
