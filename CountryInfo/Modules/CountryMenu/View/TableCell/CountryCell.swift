@@ -13,6 +13,7 @@ class CountryCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var capitalLabel: UILabel!
     @IBOutlet weak var populationLabel: UILabel!
+    @IBOutlet weak var cellContentView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,10 +25,11 @@ class CountryCell: UITableViewCell {
     }
     
     func setupView() {
-        contentView.layer.borderWidth = 2
-        contentView.layer.borderColor = UIColor.black.cgColor
-        contentView.layer.masksToBounds = true
-        contentView.layer.cornerRadius = 10
+        cellContentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
+        cellContentView.layer.borderWidth = 2
+        cellContentView.layer.borderColor = UIColor.black.cgColor
+        cellContentView.layer.masksToBounds = true
+        cellContentView.layer.cornerRadius = 10
         flagImage.image = UIImage(named: "globe")
         nameLabel.text = "Portugal"
         capitalLabel.text = "Lisboa"

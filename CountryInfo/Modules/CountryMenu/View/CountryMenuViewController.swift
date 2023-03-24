@@ -15,6 +15,9 @@ class CountryMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerCell()
+        countryTableView.dataSource = self
+        countryTableView.delegate = self
         setupViews()
     }
 
@@ -45,5 +48,24 @@ class CountryMenuViewController: UIViewController {
         countryTableView.layer.borderColor = UIColor.black.cgColor
         countryTableView.layer.borderWidth = 2
         countryTableView.layer.masksToBounds = true
+    }
+}
+
+extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func registerCell() {
+        countryTableView.register(UINib(nibName: "CountryCell", bundle: nil), forCellReuseIdentifier: "CountryCell")
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
     }
 }
