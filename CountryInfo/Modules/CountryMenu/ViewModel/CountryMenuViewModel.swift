@@ -19,11 +19,12 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
     
     // MARK: Variables
     var networkLayer: CountryMenuNetworkLayerProtocol
+    var countries: [CountryModel]?
     
     func getCountryData() {
         networkLayer.fetchData { success, data in
             if success {
-                print(data)
+                self.countries = data
             } else {
                 print("error")
             }
