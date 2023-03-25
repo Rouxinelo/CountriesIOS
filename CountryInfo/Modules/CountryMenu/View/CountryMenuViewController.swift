@@ -87,7 +87,7 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let countries = countries else { return 0 }
-        return hiddenSections.contains(String(section)) ? 0 : countries.countriesPerContinent[section].count
+        return hiddenSections.contains(buildSectionTitleString(countryData: countries, section: section)) ? 0 : countries.countriesPerContinent[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,9 +108,9 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     // MARK: - Headers logic
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        guard let countries = countries else { return nil }
         let sectionButton = UIButton()
-        sectionButton.setTitle(String(section), for: .normal)
+        sectionButton.setTitle(buildSectionTitleString(countryData: countries, section: section), for: .normal)
         sectionButton.backgroundColor = .white
         sectionButton.tag = section
         sectionButton.layer.borderColor = UIColor.black.cgColor
@@ -125,12 +125,15 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     
     @objc func hideSection(sender: UIButton) {
         guard let title = sender.titleLabel?.text else { return }
-        
         if hiddenSections.contains(title) {
             hiddenSections.remove(title)
         } else {
             hiddenSections.insert(title)
         }
         countryTableView.reloadData()
+    }
+    
+    func buildSectionTitleString(countryData: FilteredCountries, section: Int) -> String {
+        return "\(countryData.continent[section]) (\(countryData.countriesPerContinent[section].count))"
     }
 }
