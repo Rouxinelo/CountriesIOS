@@ -20,7 +20,7 @@ class CountryMenuViewController: UIViewController {
     var hiddenSections = Set<String>()
     var viewModel: CountryMenuViewModelProtocol?
     var subscription = Set<AnyCancellable>()
-    var countries: [CountryModel]?
+    var countries: [String : [CountryModel]]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
