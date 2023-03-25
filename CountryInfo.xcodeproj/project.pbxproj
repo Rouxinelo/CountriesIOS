@@ -26,6 +26,7 @@
 		6BA79B5329C3CCDE0010DB6C /* MainMenuCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B5229C3CCDE0010DB6C /* MainMenuCoordinator.swift */; };
 		6BA79B5629C3CE120010DB6C /* ModuleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B5529C3CE120010DB6C /* ModuleCoordinator.swift */; };
 		6BA79B5929C3D0920010DB6C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B5829C3D0920010DB6C /* UIColor.swift */; };
+		6BB5EA8929CFB6E900C8FD97 /* FilteredCountries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5EA8829CFB6E900C8FD97 /* FilteredCountries.swift */; };
 		6BB9936B29CE49AA00755FA3 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB9936A29CE49AA00755FA3 /* UISearchBar.swift */; };
 		6BB9936F29CE4D3300755FA3 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB9936D29CE4D3300755FA3 /* CountryCell.swift */; };
 		6BB9937029CE4D3300755FA3 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BB9936E29CE4D3300755FA3 /* CountryCell.xib */; };
@@ -72,6 +73,7 @@
 		6BA79B5229C3CCDE0010DB6C /* MainMenuCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCoordinator.swift; sourceTree = "<group>"; };
 		6BA79B5529C3CE120010DB6C /* ModuleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleCoordinator.swift; sourceTree = "<group>"; };
 		6BA79B5829C3D0920010DB6C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		6BB5EA8829CFB6E900C8FD97 /* FilteredCountries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilteredCountries.swift; sourceTree = "<group>"; };
 		6BB9936A29CE49AA00755FA3 /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
 		6BB9936D29CE4D3300755FA3 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		6BB9936E29CE4D3300755FA3 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				6B5ED14529CE66F200613CF2 /* CountryModel.swift */,
+				6BB5EA8829CFB6E900C8FD97 /* FilteredCountries.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				6BA79B5629C3CE120010DB6C /* ModuleCoordinator.swift in Sources */,
 				6BA79B5929C3D0920010DB6C /* UIColor.swift in Sources */,
 				6B5ED14629CE66F200613CF2 /* CountryModel.swift in Sources */,
+				6BB5EA8929CFB6E900C8FD97 /* FilteredCountries.swift in Sources */,
 				6B085AC229C51CF000A7A59A /* CountryMenuViewController.swift in Sources */,
 				6BA79B5129C3CC340010DB6C /* MainMenuViewModel.swift in Sources */,
 				6BB9936F29CE4D3300755FA3 /* CountryCell.swift in Sources */,

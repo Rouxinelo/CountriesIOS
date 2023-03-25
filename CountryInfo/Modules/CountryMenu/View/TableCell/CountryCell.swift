@@ -31,8 +31,11 @@ class CountryCell: UITableViewCell {
         cellContentView.layer.masksToBounds = true
         cellContentView.layer.cornerRadius = 10
         flagImage.image = UIImage(named: "globe")
-        nameLabel.text = "Portugal"
-        capitalLabel.text = "Lisboa"
-        populationLabel.text = "10 Milion"
+    }
+    
+    func configureCell(countryInfo: CountryModel) {
+        nameLabel.text = countryInfo.name.common
+        capitalLabel.text = "Not Implemented"
+        populationLabel.text = String(countryInfo.population)
     }
 }

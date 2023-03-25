@@ -10,12 +10,12 @@ import Combine
 
 protocol CountryMenuViewModelProtocol {
     func getCountryData()
-    var subject: PassthroughSubject<[String : [CountryModel]], Never> { get }
+    var subject: PassthroughSubject<FilteredCountries, Never> { get }
 }
 
 class CountryMenuViewModel: CountryMenuViewModelProtocol {
     
-    var subject = PassthroughSubject<[String : [CountryModel]], Never>()
+    var subject = PassthroughSubject<FilteredCountries, Never>()
     
     init(networkLayer: CountryMenuNetworkLayerProtocol) {
         self.networkLayer = networkLayer
@@ -23,7 +23,7 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
     
     // MARK: Variables
     var networkLayer: CountryMenuNetworkLayerProtocol
-    var countries: [String : [CountryModel]]? {
+    var countries: FilteredCountries? {
         didSet {
             guard let countries = countries else { return }
             subject.send(countries)
@@ -38,9 +38,9 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
         }
     }
     
-    func filterByContinent(countries: [CountryModel]) -> [String : [CountryModel]] {
+    func filterByContinent(countries: [CountryModel]) -> FilteredCountries {
         var continents: [String] = []
-        var orderedCountries: [String : [CountryModel]] = [:]
+        var orderedCountries: [[CountryModel]] = []
         for country in countries {
             if let continent = country.continents.first, !continents.contains(continent) {
                 continents.append(continent)
@@ -48,9 +48,9 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
         }
         for continent in continents {
             let country = countries.filter { $0.continents.first == continent }
-            orderedCountries[continent] = country
+            orderedCountries.append(country.sorted { $0.name.common < $1.name.common })
         }
         
-        return orderedCountries
+        return FilteredCountries(countriesPerContinent: orderedCountries, continent: continents)
     }
 }

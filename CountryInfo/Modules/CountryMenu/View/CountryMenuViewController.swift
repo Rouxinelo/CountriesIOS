@@ -20,7 +20,7 @@ class CountryMenuViewController: UIViewController {
     var hiddenSections = Set<String>()
     var viewModel: CountryMenuViewModelProtocol?
     var subscription = Set<AnyCancellable>()
-    var countries: [String : [CountryModel]]?
+    var countries: FilteredCountries?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,11 +86,13 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
         countryTableView.register(UINib(nibName: "CountryCell", bundle: nil), forCellReuseIdentifier: "CountryCell")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hiddenSections.contains(String(section)) ? 0 : countries?.count ?? 3
+        guard let countries = countries else { return 0 }
+        return hiddenSections.contains(String(section)) ? 0 : countries.countriesPerContinent[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? CountryCell, let countries = countries else { return UITableViewCell() }
+        cell.configureCell(countryInfo: countries.countriesPerContinent[indexPath.section][indexPath.row])
         return cell
     }
     
@@ -99,7 +101,7 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return countries?.continent.count ?? 0
     }
 
     
