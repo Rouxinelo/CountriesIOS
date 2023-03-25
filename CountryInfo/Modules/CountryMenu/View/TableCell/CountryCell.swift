@@ -30,12 +30,23 @@ class CountryCell: UITableViewCell {
         cellContentView.layer.borderColor = UIColor.black.cgColor
         cellContentView.layer.masksToBounds = true
         cellContentView.layer.cornerRadius = 10
-        flagImage.image = UIImage(named: "globe")
+        flagImage.layer.cornerRadius = flagImage.frame.width / 2
+        flagImage.layer.masksToBounds = true
+        flagImage.layer.borderWidth = 1
+        flagImage.layer.borderColor = UIColor.black.cgColor
+        flagImage.backgroundColor = .lightGray
     }
     
     func configureCell(countryInfo: CountryModel) {
         nameLabel.text = countryInfo.name.common
-        capitalLabel.text = "Not Implemented"
+        capitalLabel.text = countryInfo.capital?.first ?? "Not available"
         populationLabel.text = String(countryInfo.population)
+        
+        if let imageURL = URL(string: countryInfo.flags.png) {
+            flagImage.load(url: imageURL)
+        } else {
+            flagImage.image = UIImage(named: "noFlag")
+        }
+
     }
 }
