@@ -7,10 +7,12 @@
 
 import Foundation
 import Combine
+import UIKit
 
 protocol CountryMenuViewModelProtocol {
     func getCountryData()
     func textDidChange(text: String)
+    func goBack(navigationController: UINavigationController)
     var subject: PassthroughSubject<FilteredCountries, Never> { get }
 }
 
@@ -18,12 +20,14 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
     
     var subject = PassthroughSubject<FilteredCountries, Never>()
     
-    init(networkLayer: CountryMenuNetworkLayerProtocol) {
+    init(networkLayer: CountryMenuNetworkLayerProtocol, coordinator: CountryMenuCoordinatorProtocol) {
         self.networkLayer = networkLayer
+        self.coordinator = coordinator
     }
     
     // MARK: Variables
     var networkLayer: CountryMenuNetworkLayerProtocol
+    var coordinator: CountryMenuCoordinatorProtocol
     var countries: FilteredCountries? {
         didSet {
             guard let countries = countries else { return }
@@ -72,8 +76,11 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
                     continentsWithCountries.append(continent)
                 }
             }
-            
             subject.send(FilteredCountries(countriesPerContinent: searchedCountries, continent: continentsWithCountries))
         }
+    }
+    
+    func goBack(navigationController: UINavigationController) {
+        coordinator.goBack(navigationController: navigationController)
     }
 }

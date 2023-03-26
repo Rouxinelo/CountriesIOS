@@ -25,6 +25,7 @@ class CountryMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindCountriesRecieved()
+        defineSwipeGesture()
         registerCell()
         countryTableView.dataSource = self
         countryTableView.delegate = self
@@ -36,6 +37,22 @@ class CountryMenuViewController: UIViewController {
         }
     }
 
+    // MARK: Navigation
+    
+    func defineSwipeGesture() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(goBack))
+        swipeRight.direction = .right
+        
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func goBack() {
+        guard let navigationController = navigationController, let viewModel = viewModel else { return }
+        viewModel.goBack(navigationController: navigationController)
+    }
+    
+    // MARK: Combine Binding
+    
     func bindCountriesRecieved() {
         guard let viewModel = viewModel else { return }
         
@@ -50,6 +67,8 @@ class CountryMenuViewController: UIViewController {
             self.countryTableView.reloadData()
         }
     }
+    
+    // MARK: View Configuration
     
     func setupViews() {
         setupBackgroundView()
@@ -80,6 +99,8 @@ class CountryMenuViewController: UIViewController {
         countryTableView.layer.masksToBounds = true
     }
 }
+
+// MARK: TableView Logic
 
 extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -136,8 +157,10 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     
     func buildSectionTitleString(countryData: FilteredCountries, section: Int) -> String {
         return "\(countryData.continent[section]) (\(countryData.countriesPerContinent[section].count))"
-    }
+    }    
 }
+
+// MARK: SearchBar Logic
 
 extension CountryMenuViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
