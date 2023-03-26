@@ -157,7 +157,11 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     
     func buildSectionTitleString(countryData: FilteredCountries, section: Int) -> String {
         return "\(countryData.continent[section]) (\(countryData.countriesPerContinent[section].count))"
-    }    
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
 }
 
 // MARK: SearchBar Logic
