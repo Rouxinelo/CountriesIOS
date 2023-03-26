@@ -62,12 +62,18 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
             subject.send(countries)
         } else {
             var searchedCountries: [[CountryModel]] = []
+            var continentsWithCountries: [String] = []
+            
             for countries in countries.countriesPerContinent {
                 let filteredCountries = countries.filter { $0.name.common.lowercased().contains(text.lowercased())}
-                searchedCountries.append(filteredCountries)
+                
+                if let continent = filteredCountries.first?.continents.first, !filteredCountries.isEmpty {
+                    searchedCountries.append(filteredCountries)
+                    continentsWithCountries.append(continent)
+                }
             }
             
-            subject.send(FilteredCountries(countriesPerContinent: searchedCountries, continent: countries.continent))
+            subject.send(FilteredCountries(countriesPerContinent: searchedCountries, continent: continentsWithCountries))
         }
     }
 }

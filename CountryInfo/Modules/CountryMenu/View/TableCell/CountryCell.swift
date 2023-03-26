@@ -40,7 +40,7 @@ class CountryCell: UITableViewCell {
     func configureCell(countryInfo: CountryModel) {
         nameLabel.text = countryInfo.name.common
         capitalLabel.text = countryInfo.capital?.first ?? "Not available"
-        populationLabel.text = String(countryInfo.population)
+        populationLabel.text = formatPopulation(population: countryInfo.population)
         
         if let imageURL = URL(string: countryInfo.flags.png) {
             flagImage.load(url: imageURL)

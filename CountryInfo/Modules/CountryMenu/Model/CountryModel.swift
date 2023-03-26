@@ -11,7 +11,7 @@ struct CountryModel: Codable {
     var name: Name
     var currencies: [String : Currency]?
     var continents: [String]
-    var population: Int
+    var population: Double
     var borders: [String]?
     var area: Double
     var capital: [String]?

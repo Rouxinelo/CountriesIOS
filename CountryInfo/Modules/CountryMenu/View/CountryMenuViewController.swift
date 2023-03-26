@@ -40,7 +40,6 @@ class CountryMenuViewController: UIViewController {
         guard let viewModel = viewModel else { return }
         
         viewModel.subject.sink { countries in
-            print(countries)
             self.countries = countries
             self.setupData()
         }.store(in: &subscription)
