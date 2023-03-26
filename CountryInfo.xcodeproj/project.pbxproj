@@ -31,6 +31,8 @@
 		6BB5EA8D29D05D4D00C8FD97 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5EA8C29D05D4D00C8FD97 /* Utils.swift */; };
 		6BB5EA8F29D060C000C8FD97 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5EA8E29D060C000C8FD97 /* Double.swift */; };
 		6BB5EA9429D0945200C8FD97 /* CountryDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5EA9329D0945200C8FD97 /* CountryDetailCoordinator.swift */; };
+		6BB5EA9829D0953400C8FD97 /* CountryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB5EA9629D0953400C8FD97 /* CountryDetailViewController.swift */; };
+		6BB5EA9929D0953400C8FD97 /* CountryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BB5EA9729D0953400C8FD97 /* CountryDetailViewController.xib */; };
 		6BB9936B29CE49AA00755FA3 /* UISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB9936A29CE49AA00755FA3 /* UISearchBar.swift */; };
 		6BB9936F29CE4D3300755FA3 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB9936D29CE4D3300755FA3 /* CountryCell.swift */; };
 		6BB9937029CE4D3300755FA3 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BB9936E29CE4D3300755FA3 /* CountryCell.xib */; };
@@ -82,6 +84,8 @@
 		6BB5EA8C29D05D4D00C8FD97 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		6BB5EA8E29D060C000C8FD97 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		6BB5EA9329D0945200C8FD97 /* CountryDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailCoordinator.swift; sourceTree = "<group>"; };
+		6BB5EA9629D0953400C8FD97 /* CountryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewController.swift; sourceTree = "<group>"; };
+		6BB5EA9729D0953400C8FD97 /* CountryDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryDetailViewController.xib; sourceTree = "<group>"; };
 		6BB9936A29CE49AA00755FA3 /* UISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBar.swift; sourceTree = "<group>"; };
 		6BB9936D29CE4D3300755FA3 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		6BB9936E29CE4D3300755FA3 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
@@ -279,9 +283,19 @@
 		6BB5EA9229D0940D00C8FD97 /* CountryDetail */ = {
 			isa = PBXGroup;
 			children = (
+				6BB5EA9529D0951C00C8FD97 /* View */,
 				6BB5EA9329D0945200C8FD97 /* CountryDetailCoordinator.swift */,
 			);
 			path = CountryDetail;
+			sourceTree = "<group>";
+		};
+		6BB5EA9529D0951C00C8FD97 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6BB5EA9629D0953400C8FD97 /* CountryDetailViewController.swift */,
+				6BB5EA9729D0953400C8FD97 /* CountryDetailViewController.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		6BB9936C29CE4D0600755FA3 /* TableCell */ = {
@@ -399,6 +413,7 @@
 			files = (
 				6BB9937029CE4D3300755FA3 /* CountryCell.xib in Resources */,
 				6BA79B2629C3C8CF0010DB6C /* LaunchScreen.storyboard in Resources */,
+				6BB5EA9929D0953400C8FD97 /* CountryDetailViewController.xib in Resources */,
 				6BA79B4F29C3CC140010DB6C /* MainMenuViewController.xib in Resources */,
 				6B085AC329C51CF000A7A59A /* CountryMenuViewController.xib in Resources */,
 				6BA79B2329C3C8CF0010DB6C /* Assets.xcassets in Resources */,
@@ -444,6 +459,7 @@
 				6B085AC529C51DA800A7A59A /* CountryMenuCoordinator.swift in Sources */,
 				6B5ED14229CE645E00613CF2 /* CountryMenuViewModel.swift in Sources */,
 				6BB5EA8F29D060C000C8FD97 /* Double.swift in Sources */,
+				6BB5EA9829D0953400C8FD97 /* CountryDetailViewController.swift in Sources */,
 				6BB9936B29CE49AA00755FA3 /* UISearchBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

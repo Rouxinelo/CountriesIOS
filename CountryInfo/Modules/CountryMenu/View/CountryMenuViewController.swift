@@ -160,7 +160,10 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        guard let navigationController = navigationController else { return }
+        
+        let vc = CountryDetailCoordinator().start()
+        navigationController.pushViewController(vc, animated: true)
     }
 }
 

@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 class CountryDetailCoordinator: ModuleCoordinator {
     func start() -> UIViewController {
-        let vc = CountryMenuViewController()
-        vc.viewModel = CountryMenuViewModel(networkLayer: CountryMenuNetworkLayer(), coordinator: self)
+        let vc = CountryDetailViewController()
         return vc
     }
 }
