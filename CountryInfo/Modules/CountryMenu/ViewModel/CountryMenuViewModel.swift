@@ -10,6 +10,7 @@ import Combine
 
 protocol CountryMenuViewModelProtocol {
     func getCountryData()
+    func textDidChange(text: String)
     var subject: PassthroughSubject<FilteredCountries, Never> { get }
 }
 
@@ -52,5 +53,21 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
         }
         
         return FilteredCountries(countriesPerContinent: orderedCountries, continent: continents)
+    }
+    
+    func textDidChange(text: String) {
+        guard let countries = countries else { return }
+        
+        if text.trimmingCharacters(in: .whitespaces) == "" {
+            subject.send(countries)
+        } else {
+            var searchedCountries: [[CountryModel]] = []
+            for countries in countries.countriesPerContinent {
+                let filteredCountries = countries.filter { $0.name.common.lowercased().contains(text.lowercased())}
+                searchedCountries.append(filteredCountries)
+            }
+            
+            subject.send(FilteredCountries(countriesPerContinent: searchedCountries, continent: countries.continent))
+        }
     }
 }

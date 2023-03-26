@@ -28,6 +28,7 @@ class CountryMenuViewController: UIViewController {
         registerCell()
         countryTableView.dataSource = self
         countryTableView.delegate = self
+        countrySearchBar.delegate = self
         setupViews()
         
         if let viewModel = viewModel {
@@ -50,6 +51,7 @@ class CountryMenuViewController: UIViewController {
             self.countryTableView.reloadData()
         }
     }
+    
     func setupViews() {
         setupBackgroundView()
         setupSearchBar()
@@ -135,5 +137,11 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     
     func buildSectionTitleString(countryData: FilteredCountries, section: Int) -> String {
         return "\(countryData.continent[section]) (\(countryData.countriesPerContinent[section].count))"
+    }
+}
+
+extension CountryMenuViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel?.textDidChange(text: searchText)
     }
 }
