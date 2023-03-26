@@ -8,10 +8,18 @@
 import Foundation
 import UIKit
 
-class CountryMenuCoordinator: ModuleCoordinator {
+protocol CountryMenuCoordinatorProtocol {
+    func goBack(navigationController: UINavigationController)
+}
+
+class CountryMenuCoordinator: ModuleCoordinator, CountryMenuCoordinatorProtocol {
     func start() -> UIViewController {
         let vc = CountryMenuViewController()
-        vc.viewModel = CountryMenuViewModel(networkLayer: CountryMenuNetworkLayer())
+        vc.viewModel = CountryMenuViewModel(networkLayer: CountryMenuNetworkLayer(), coordinator: self)
         return vc
+    }
+    
+    func goBack(navigationController: UINavigationController) {
+        navigationController.popViewController(animated: true)
     }
 }

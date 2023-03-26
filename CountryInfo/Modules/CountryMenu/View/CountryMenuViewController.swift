@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class CountryMenuViewController: UIViewController {
 
@@ -18,12 +19,17 @@ class CountryMenuViewController: UIViewController {
     // MARK: Functions
     var hiddenSections = Set<String>()
     var viewModel: CountryMenuViewModelProtocol?
-    
+    var subscription = Set<AnyCancellable>()
+    var countries: FilteredCountries?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindCountriesRecieved()
+        defineSwipeGesture()
         registerCell()
         countryTableView.dataSource = self
         countryTableView.delegate = self
+        countrySearchBar.delegate = self
         setupViews()
         
         if let viewModel = viewModel {
@@ -31,6 +37,39 @@ class CountryMenuViewController: UIViewController {
         }
     }
 
+    // MARK: Navigation
+    
+    func defineSwipeGesture() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(goBack))
+        swipeRight.direction = .right
+        
+        self.view.addGestureRecognizer(swipeRight)
+    }
+    
+    @objc func goBack() {
+        guard let navigationController = navigationController, let viewModel = viewModel else { return }
+        viewModel.goBack(navigationController: navigationController)
+    }
+    
+    // MARK: Combine Binding
+    
+    func bindCountriesRecieved() {
+        guard let viewModel = viewModel else { return }
+        
+        viewModel.subject.sink { countries in
+            self.countries = countries
+            self.setupData()
+        }.store(in: &subscription)
+    }
+    
+    func setupData() {
+        DispatchQueue.main.async {
+            self.countryTableView.reloadData()
+        }
+    }
+    
+    // MARK: View Configuration
+    
     func setupViews() {
         setupBackgroundView()
         setupSearchBar()
@@ -61,17 +100,21 @@ class CountryMenuViewController: UIViewController {
     }
 }
 
+// MARK: TableView Logic
+
 extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate {
     
     func registerCell() {
         countryTableView.register(UINib(nibName: "CountryCell", bundle: nil), forCellReuseIdentifier: "CountryCell")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return hiddenSections.contains(String(section)) ? 0 : 3
+        guard let countries = countries else { return 0 }
+        return hiddenSections.contains(buildSectionTitleString(countryData: countries, section: section)) ? 0 : countries.countriesPerContinent[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CountryCell", for: indexPath) as? CountryCell, let countries = countries else { return UITableViewCell() }
+        cell.configureCell(countryInfo: countries.countriesPerContinent[indexPath.section][indexPath.row])
         return cell
     }
     
@@ -80,16 +123,16 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return countries?.continent.count ?? 0
     }
 
     
     // MARK: - Headers logic
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        guard let countries = countries else { return nil }
         let sectionButton = UIButton()
-        sectionButton.setTitle(String(section), for: .normal)
+        sectionButton.setTitle(buildSectionTitleString(countryData: countries, section: section), for: .normal)
         sectionButton.backgroundColor = .white
         sectionButton.tag = section
         sectionButton.layer.borderColor = UIColor.black.cgColor
@@ -104,12 +147,23 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     
     @objc func hideSection(sender: UIButton) {
         guard let title = sender.titleLabel?.text else { return }
-        
         if hiddenSections.contains(title) {
             hiddenSections.remove(title)
         } else {
             hiddenSections.insert(title)
         }
         countryTableView.reloadData()
+    }
+    
+    func buildSectionTitleString(countryData: FilteredCountries, section: Int) -> String {
+        return "\(countryData.continent[section]) (\(countryData.countriesPerContinent[section].count))"
+    }    
+}
+
+// MARK: SearchBar Logic
+
+extension CountryMenuViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel?.textDidChange(text: searchText)
     }
 }

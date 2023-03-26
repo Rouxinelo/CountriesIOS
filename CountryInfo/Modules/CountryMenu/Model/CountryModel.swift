@@ -11,9 +11,11 @@ struct CountryModel: Codable {
     var name: Name
     var currencies: [String : Currency]?
     var continents: [String]
-    var population: Int
+    var population: Double
     var borders: [String]?
     var area: Double
+    var capital: [String]?
+    var flags: Flag
 }
 
 struct Name: Codable {
@@ -25,3 +27,6 @@ struct Currency: Codable {
     var name: String
 }
 
+struct Flag: Codable {
+    var png: String
+}
