@@ -16,6 +16,7 @@ struct CountryModel: Codable {
     var area: Double
     var capital: [String]?
     var flags: Flag
+    var cca3: String
 }
 
 struct Name: Codable {

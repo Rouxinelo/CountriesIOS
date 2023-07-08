@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +12,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CountryDetailViewController" customModule="CountryInfo" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundView" destination="i5M-Pr-FkT" id="MGm-n3-HKz"/>
+                <outlet property="countryImage" destination="wF7-S2-9mW" id="SBe-pr-LCd"/>
+                <outlet property="detailTableView" destination="PdP-Wp-8vK" id="qEM-M3-YnH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,9 +21,30 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wF7-S2-9mW">
+                    <rect key="frame" x="84" y="75" width="225" height="125"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="125" id="HpP-Dr-SkM"/>
+                        <constraint firstAttribute="width" constant="225" id="trY-kF-aB8"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PdP-Wp-8vK">
+                    <rect key="frame" x="8" y="216" width="377" height="602"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="-103" y="20"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="PdP-Wp-8vK" secondAttribute="trailing" constant="8" id="6yU-4T-fUI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="PdP-Wp-8vK" secondAttribute="bottom" id="EM0-Of-m9O"/>
+                <constraint firstItem="PdP-Wp-8vK" firstAttribute="top" secondItem="wF7-S2-9mW" secondAttribute="bottom" constant="16" id="IZF-KC-gC8"/>
+                <constraint firstItem="PdP-Wp-8vK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Noe-pg-O0f"/>
+                <constraint firstItem="wF7-S2-9mW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="VbB-Ph-I8b"/>
+                <constraint firstItem="wF7-S2-9mW" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="f02-TK-6Um"/>
+            </constraints>
+            <point key="canvasLocation" x="-103.05343511450381" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>

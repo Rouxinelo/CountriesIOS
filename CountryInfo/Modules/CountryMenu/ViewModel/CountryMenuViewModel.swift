@@ -13,11 +13,11 @@ protocol CountryMenuViewModelProtocol {
     func getCountryData()
     func textDidChange(text: String)
     func goBack(navigationController: UINavigationController)
+    func getBorders(country: CountryModel, countries: [CountryModel]) -> [String : String]
     var subject: PassthroughSubject<FilteredCountries, Never> { get }
 }
 
 class CountryMenuViewModel: CountryMenuViewModelProtocol {
-    
     var subject = PassthroughSubject<FilteredCountries, Never>()
     
     init(networkLayer: CountryMenuNetworkLayerProtocol, coordinator: CountryMenuCoordinatorProtocol) {
@@ -82,5 +82,19 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
     
     func goBack(navigationController: UINavigationController) {
         coordinator.goBack(navigationController: navigationController)
+    }
+    
+    func getBorders(country: CountryModel, countries: [CountryModel]) -> [String : String] {
+        var dict: [String : String] = [:]
+        
+        if let borders = country.borders {
+            for border in borders {
+                if let borderCountry = countries.first(where: { $0.cca3 == border }) {
+                    dict[borderCountry.name.common] = borderCountry.flags.png
+                }
+            }
+        }
+
+        return dict
     }
 }
