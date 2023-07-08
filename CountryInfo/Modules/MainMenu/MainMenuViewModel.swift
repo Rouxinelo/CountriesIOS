@@ -6,7 +6,21 @@
 //
 
 import Foundation
+import UIKit
 
-class MainMenuViewModel {
+protocol MainMenuViewModelProtocol {
+    func goToCountryMenu(navigationController: UINavigationController)
+    func goToAboutScreen(navigationController: UINavigationController)
+}
+
+class MainMenuViewModel: MainMenuViewModelProtocol {
+    func goToCountryMenu(navigationController: UINavigationController) {
+        let vc = CountryMenuCoordinator().start()
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func goToAboutScreen(navigationController: UINavigationController) {
+    }
+    
     
 }

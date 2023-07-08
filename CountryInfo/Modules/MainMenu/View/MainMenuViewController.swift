@@ -16,6 +16,9 @@ class MainMenuViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var globeImage: UIImageView!
     
+    // MARK: - Variables
+    var viewModel: MainMenuViewModelProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -63,11 +66,13 @@ class MainMenuViewController: UIViewController {
     
     @IBAction func goToCountryMenu(_ sender: Any) {
         if let navigationController = self.navigationController {
-            let vc = CountryMenuCoordinator().start()
-            navigationController.pushViewController(vc, animated: true)
+            viewModel?.goToCountryMenu(navigationController: navigationController)
         }
     }
     
     @objc func goToAbout() {
+        if let navigationController = self.navigationController {
+            viewModel?.goToAboutScreen(navigationController: navigationController)
+        }
     }
 }
