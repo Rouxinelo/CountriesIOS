@@ -35,6 +35,7 @@ class CountryCell: UITableViewCell {
         flagImage.layer.borderWidth = 1
         flagImage.layer.borderColor = UIColor.black.cgColor
         flagImage.backgroundColor = .lightGray
+        selectionStyle = .none
     }
     
     func configureCell(countryInfo: CountryModel) {

@@ -11,7 +11,6 @@ import UIKit
 class MainMenuCoordinator: ModuleCoordinator {
     func start() -> UIViewController {
         let vc = MainMenuViewController()
-        
         return vc
     }
 }
