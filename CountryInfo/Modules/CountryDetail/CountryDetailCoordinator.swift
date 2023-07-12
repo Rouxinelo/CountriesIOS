@@ -14,7 +14,7 @@ class CountryDetailCoordinator: ModuleCoordinator {
     func start() -> UIViewController {
         guard let country = country else { return UIViewController() }
         let vc = CountryDetailViewController()
-        vc.country = country
+        vc.viewModel = CountryDetailViewModel(country: country)
         return vc
     }
 }
