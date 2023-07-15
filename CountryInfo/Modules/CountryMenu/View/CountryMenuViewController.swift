@@ -33,6 +33,7 @@ class CountryMenuViewController: UIViewController {
         changeLoadingIndicatorVisibility(hidden: false)
         loadingIndicator.startAnimating()
         bindCountriesRecieved()
+        bindCountrySelected()
         defineSwipeGesture()
         registerCell()
         countryTableView.dataSource = self
@@ -63,10 +64,16 @@ class CountryMenuViewController: UIViewController {
     
     func bindCountriesRecieved() {
         guard let viewModel = viewModel else { return }
-        
         viewModel.subject.sink { countries in
             self.countries = countries
             self.setupData()
+        }.store(in: &subscription)
+    }
+    
+    func bindCountrySelected() {
+        guard let viewModel = viewModel else { return }
+        viewModel.mappingSubject.sink { countryRepresentable in
+            self.goToCountryDetail(country: countryRepresentable)
         }.store(in: &subscription)
     }
     
@@ -74,6 +81,14 @@ class CountryMenuViewController: UIViewController {
         DispatchQueue.main.async {
             self.countryTableView.reloadData()
         }
+    }
+    
+    func goToCountryDetail(country: CountryRepresentable) {
+        guard let navigationController = navigationController else { return }
+        let coord = CountryDetailCoordinator()
+        coord.country = country
+        let vc = coord.start()
+        navigationController.pushViewController(vc, animated: true)
     }
     
     // MARK: View Configuration
@@ -185,13 +200,11 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let countries = countries, let navigationController = navigationController else { return }
-        
-        let coord = CountryDetailCoordinator()
-        coord.country = countries.countriesPerContinent[indexPath.section][indexPath.row]
-        coord.borders = viewModel?.getBorders(country: countries.countriesPerContinent[indexPath.section][indexPath.row], countries: countries.countriesPerContinent.flatMap {$0})
-        let vc = coord.start()
-        navigationController.pushViewController(vc, animated: true)
+        guard let countries = countries else { return }
+        let borders = viewModel?.getBorders(country: countries.countriesPerContinent[indexPath.section][indexPath.row],
+                                            countries: countries.countriesPerContinent.flatMap {$0})
+        viewModel?.getRepresentableFromModel(borders: borders ?? [:],
+                                             country: countries.countriesPerContinent[indexPath.section][indexPath.row])
     }
 }
 

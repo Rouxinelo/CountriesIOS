@@ -37,4 +37,5 @@ extension Section {
 struct DetailSection {
     var sectionTitle: Section
     var sectionInfo: String
+    var borders: [String: String]?
 }

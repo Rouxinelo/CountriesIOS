@@ -44,7 +44,7 @@ class CountryDetailViewController: UIViewController {
         countryImage.layer.cornerRadius = 10
     }
     
-    func setCountry(country: CountryModel) {
+    func setCountry(country: CountryRepresentable) {
         guard let url = URL(string: country.flags.png) else { return }
         countryImage.load(url: url)
         setTitle(countryName: country.name.common)
@@ -102,6 +102,12 @@ extension CountryDetailViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        guard let sections = detailSections else { return UITableView.automaticDimension }
+        switch sections[indexPath.row].sectionTitle {
+        case .borders:
+            return 1000
+        default:
+            return 100
+        }
     }
 }

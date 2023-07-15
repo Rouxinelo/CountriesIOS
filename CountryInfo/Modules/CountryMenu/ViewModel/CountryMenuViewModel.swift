@@ -14,12 +14,15 @@ protocol CountryMenuViewModelProtocol {
     func textDidChange(text: String)
     func goBack(navigationController: UINavigationController)
     func getBorders(country: CountryModel, countries: [CountryModel]) -> [String : String]
+    func getRepresentableFromModel(borders: [String : String], country: CountryModel)
     var subject: PassthroughSubject<FilteredCountries, Never> { get }
+    var mappingSubject: PassthroughSubject<CountryRepresentable, Never> { get }
 }
 
 class CountryMenuViewModel: CountryMenuViewModelProtocol {
     var subject = PassthroughSubject<FilteredCountries, Never>()
-    
+    var mappingSubject = PassthroughSubject<CountryRepresentable, Never>()
+
     init(networkLayer: CountryMenuNetworkLayerProtocol, coordinator: CountryMenuCoordinatorProtocol) {
         self.networkLayer = networkLayer
         self.coordinator = coordinator
@@ -96,5 +99,17 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
         }
 
         return dict
+    }
+    
+    func getRepresentableFromModel(borders: [String : String], country: CountryModel) {
+        let countryRepresentable = CountryRepresentable(name: country.name,
+                                                        currencies: country.currencies,
+                                                        continents: country.continents,
+                                                        population: country.population,
+                                                        borders: borders,
+                                                        area: country.area,
+                                                        capital: country.capital,
+                                                        flags: country.flags)
+        mappingSubject.send(countryRepresentable)
     }
 }

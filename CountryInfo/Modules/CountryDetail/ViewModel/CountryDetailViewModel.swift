@@ -9,18 +9,18 @@ import Foundation
 import Combine
 
 protocol CountryDetailViewModelProtocol {
-    func parseDetailSections(countryInfo: CountryModel)
+    func parseDetailSections(countryInfo: CountryRepresentable)
     func getCountryInfo()
     var detailSubject: PassthroughSubject<[DetailSection], Never> { get }
-    var countrySubject: PassthroughSubject<CountryModel, Never> { get }
+    var countrySubject: PassthroughSubject<CountryRepresentable, Never> { get }
 }
 
 class CountryDetailViewModel: CountryDetailViewModelProtocol {
-    var country: CountryModel
+    var country: CountryRepresentable
     var detailSubject = PassthroughSubject<[DetailSection], Never>()
-    var countrySubject = PassthroughSubject<CountryModel, Never>()
+    var countrySubject = PassthroughSubject<CountryRepresentable, Never>()
 
-    public init(country: CountryModel) {
+    public init(country: CountryRepresentable) {
         self.country = country
     }
     
@@ -29,7 +29,7 @@ class CountryDetailViewModel: CountryDetailViewModelProtocol {
         parseDetailSections(countryInfo: country)
     }
     
-    func parseDetailSections(countryInfo: CountryModel) {
+    func parseDetailSections(countryInfo: CountryRepresentable) {
         var details: [DetailSection] = []
         
         if let currency = countryInfo.currencies?.first {
@@ -49,7 +49,7 @@ class CountryDetailViewModel: CountryDetailViewModelProtocol {
         }
         
         if let borders = countryInfo.borders {
-            details.append(DetailSection(sectionTitle: .borders, sectionInfo: borders.joined(separator: " ")))
+            details.append(DetailSection(sectionTitle: .borders, sectionInfo: "", borders: borders))
         }
         
         detailSubject.send(details)

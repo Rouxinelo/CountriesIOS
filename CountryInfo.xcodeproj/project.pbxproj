@@ -40,6 +40,7 @@
 		6BB9936F29CE4D3300755FA3 /* CountryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB9936D29CE4D3300755FA3 /* CountryCell.swift */; };
 		6BB9937029CE4D3300755FA3 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BB9936E29CE4D3300755FA3 /* CountryCell.xib */; };
 		6BFEDA8C2A5A169300C23A8A /* CountryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEDA8B2A5A169300C23A8A /* CountryDetailViewModel.swift */; };
+		6BFEDA8E2A6329F000C23A8A /* CountryRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEDA8D2A6329F000C23A8A /* CountryRepresentable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		6BB9936D29CE4D3300755FA3 /* CountryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCell.swift; sourceTree = "<group>"; };
 		6BB9936E29CE4D3300755FA3 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
 		6BFEDA8B2A5A169300C23A8A /* CountryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewModel.swift; sourceTree = "<group>"; };
+		6BFEDA8D2A6329F000C23A8A /* CountryRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRepresentable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 			children = (
 				6B5ED14529CE66F200613CF2 /* CountryModel.swift */,
 				6BB5EA8829CFB6E900C8FD97 /* FilteredCountries.swift */,
+				6BFEDA8D2A6329F000C23A8A /* CountryRepresentable.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				6B5ED14629CE66F200613CF2 /* CountryModel.swift in Sources */,
 				6BB5EA8929CFB6E900C8FD97 /* FilteredCountries.swift in Sources */,
 				6B085AC229C51CF000A7A59A /* CountryMenuViewController.swift in Sources */,
+				6BFEDA8E2A6329F000C23A8A /* CountryRepresentable.swift in Sources */,
 				6BA79B5129C3CC340010DB6C /* MainMenuViewModel.swift in Sources */,
 				6BB9936F29CE4D3300755FA3 /* CountryCell.swift in Sources */,
 				6BB5EA9429D0945200C8FD97 /* CountryDetailCoordinator.swift in Sources */,

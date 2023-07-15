@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 class CountryDetailCoordinator: ModuleCoordinator {
-    var country: CountryModel?
-    var borders: [String : String]?
+    var country: CountryRepresentable?
     
     func start() -> UIViewController {
         guard let country = country else { return UIViewController() }
