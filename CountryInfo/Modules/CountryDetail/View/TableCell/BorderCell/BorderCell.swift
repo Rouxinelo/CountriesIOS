@@ -9,10 +9,12 @@ import UIKit
 
 class BorderCell: UITableViewCell {
 
+    // MARK: IBOutlets
     @IBOutlet weak var sectionTitleContentView: UIView!
     @IBOutlet weak var sectionTitle: UILabel!
     @IBOutlet weak var borderCollectionView: UICollectionView!
     
+    // MARK: Variables
     var countries: [String]?
     var borders: [String: String]? {
         didSet {
@@ -22,6 +24,7 @@ class BorderCell: UITableViewCell {
         }
     }
     
+    // MARK: Functions
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0))
@@ -55,6 +58,7 @@ class BorderCell: UITableViewCell {
     }
 }
 
+// MARK: CollectionView
 extension BorderCell: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func registerCell() {

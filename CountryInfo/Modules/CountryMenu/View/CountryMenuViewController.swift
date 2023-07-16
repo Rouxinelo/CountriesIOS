@@ -60,6 +60,11 @@ class CountryMenuViewController: UIViewController {
         viewModel.goBack(navigationController: navigationController)
     }
     
+    func goToCountryDetail(country: CountryRepresentable) {
+        guard let navigationController = navigationController else { return }
+        viewModel?.goToCountryDetail(navigationController: navigationController, countryRepresentable: country)
+    }
+    
     // MARK: Combine Binding
     
     func bindCountriesRecieved() {
@@ -81,14 +86,6 @@ class CountryMenuViewController: UIViewController {
         DispatchQueue.main.async {
             self.countryTableView.reloadData()
         }
-    }
-    
-    func goToCountryDetail(country: CountryRepresentable) {
-        guard let navigationController = navigationController else { return }
-        let coord = CountryDetailCoordinator()
-        coord.country = country
-        let vc = coord.start()
-        navigationController.pushViewController(vc, animated: true)
     }
     
     // MARK: View Configuration

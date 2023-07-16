@@ -110,7 +110,7 @@ extension CountryDetailViewController: UITableViewDataSource, UITableViewDelegat
         guard let sections = detailSections else { return UITableView.automaticDimension }
         switch sections[indexPath.row].sectionTitle {
         case .borders:
-            return 200
+            return 270
         default:
             return 100
         }

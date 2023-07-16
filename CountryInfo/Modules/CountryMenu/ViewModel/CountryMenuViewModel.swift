@@ -15,6 +15,7 @@ protocol CountryMenuViewModelProtocol {
     func goBack(navigationController: UINavigationController)
     func getBorders(country: CountryModel) -> [String : String]
     func getRepresentableFromModel(borders: [String : String], country: CountryModel)
+    func goToCountryDetail(navigationController: UINavigationController, countryRepresentable: CountryRepresentable)
     var subject: PassthroughSubject<FilteredCountries, Never> { get }
     var mappingSubject: PassthroughSubject<CountryRepresentable, Never> { get }
 }
@@ -85,6 +86,10 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
     
     func goBack(navigationController: UINavigationController) {
         coordinator.goBack(navigationController: navigationController)
+    }
+    
+    func goToCountryDetail(navigationController: UINavigationController, countryRepresentable: CountryRepresentable) {
+        coordinator.goToDetail(navigationController: navigationController, countryRepresentable: countryRepresentable)
     }
     
     func getBorders(country: CountryModel) -> [String : String] {
