@@ -14,17 +14,26 @@ class CountryMenuViewController: UIViewController {
     
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var countryTableView: UITableView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var countrySearchBar: UISearchBar!
     
     // MARK: Functions
     var hiddenSections = Set<String>()
     var viewModel: CountryMenuViewModelProtocol?
     var subscription = Set<AnyCancellable>()
-    var countries: FilteredCountries?
+    var countries: FilteredCountries? {
+        didSet {
+            changeLoadingIndicatorVisibility(hidden: true)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        changeLoadingIndicatorVisibility(hidden: false)
+        loadingIndicator.startAnimating()
         bindCountriesRecieved()
+        bindCountrySelected()
         defineSwipeGesture()
         registerCell()
         countryTableView.dataSource = self
@@ -51,14 +60,25 @@ class CountryMenuViewController: UIViewController {
         viewModel.goBack(navigationController: navigationController)
     }
     
+    func goToCountryDetail(country: CountryRepresentable) {
+        guard let navigationController = navigationController else { return }
+        viewModel?.goToCountryDetail(navigationController: navigationController, countryRepresentable: country)
+    }
+    
     // MARK: Combine Binding
     
     func bindCountriesRecieved() {
         guard let viewModel = viewModel else { return }
-        
         viewModel.subject.sink { countries in
             self.countries = countries
             self.setupData()
+        }.store(in: &subscription)
+    }
+    
+    func bindCountrySelected() {
+        guard let viewModel = viewModel else { return }
+        viewModel.mappingSubject.sink { countryRepresentable in
+            self.goToCountryDetail(country: countryRepresentable)
         }.store(in: &subscription)
     }
     
@@ -74,6 +94,7 @@ class CountryMenuViewController: UIViewController {
         setupBackgroundView()
         setupSearchBar()
         setupTableView()
+        setupLoadingIndicator()
     }
     
     func setupBackgroundView() {
@@ -98,6 +119,21 @@ class CountryMenuViewController: UIViewController {
         countryTableView.layer.borderWidth = 2
         countryTableView.layer.masksToBounds = true
     }
+    
+    func setupLoadingIndicator() {
+        loadingView.layer.cornerRadius = 10
+        loadingView.layer.borderColor = UIColor.black.cgColor
+        loadingView.layer.borderWidth = 2
+        loadingView.layer.masksToBounds = true
+    }
+    
+    // MARK: Loading Indicator
+    
+    func changeLoadingIndicatorVisibility(hidden: Bool) {
+        DispatchQueue.main.async {
+            self.loadingView.isHidden = hidden
+        }
+    }
 }
 
 // MARK: TableView Logic
@@ -107,6 +143,7 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     func registerCell() {
         countryTableView.register(UINib(nibName: "CountryCell", bundle: nil), forCellReuseIdentifier: "CountryCell")
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let countries = countries else { return 0 }
         return hiddenSections.contains(buildSectionTitleString(countryData: countries, section: section)) ? 0 : countries.countriesPerContinent[section].count
@@ -157,7 +194,14 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     
     func buildSectionTitleString(countryData: FilteredCountries, section: Int) -> String {
         return "\(countryData.continent[section]) (\(countryData.countriesPerContinent[section].count))"
-    }    
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let countries = countries else { return }
+        let borders = viewModel?.getBorders(country: countries.countriesPerContinent[indexPath.section][indexPath.row])
+        viewModel?.getRepresentableFromModel(borders: borders ?? [:],
+                                             country: countries.countriesPerContinent[indexPath.section][indexPath.row])
+    }
 }
 
 // MARK: SearchBar Logic
