@@ -6,20 +6,33 @@
 //
 
 import UIKit
+import Combine
 
 class CountryDetailViewController: UIViewController {
 
+    // MARK: IBOutlets
     @IBOutlet var backgroundView: UIView!
     @IBOutlet weak var detailTableView: UITableView!
     @IBOutlet weak var countryImage: UIImageView!
     
-    var country: CountryModel?
-    var detailSections: [DetailSection]?
-    
+    // MARK: Variables
+    var detailSections: [DetailSection]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.detailTableView.reloadData()
+            }
+        }
+    }
+    var viewModel: CountryDetailViewModelProtocol?
+    var subscription = Set<AnyCancellable>()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
+        viewModel?.getCountryInfo()
         registerCell()
         detailTableView.dataSource = self
+        detailTableView.delegate = self
         configureViews()
     }
     
@@ -29,14 +42,12 @@ class CountryDetailViewController: UIViewController {
         countryImage.layer.borderColor = UIColor.black.cgColor
         countryImage.layer.borderWidth = 2
         countryImage.layer.cornerRadius = 10
-        setCountry()
     }
     
-    func setCountry() {
-        guard let country = country, let url = URL(string: country.flags.png) else { return }
+    func setCountry(country: CountryRepresentable) {
+        guard let url = URL(string: country.flags.png) else { return }
         countryImage.load(url: url)
         setTitle(countryName: country.name.common)
-        setDetailArray()
         detailTableView.reloadData()
     }
     
@@ -47,32 +58,22 @@ class CountryDetailViewController: UIViewController {
         title = countryName
     }
     
-    func setDetailArray() {
-        guard let country = country else { return }
-        
-        var details: [DetailSection] = []
-        
-        if let currency = country.currencies?.first {
-            details.append(DetailSection(sectionTitle: .currency, sectionInfo: currency.value.name))
-        }
-        
-        if let continent = country.continents.first {
-            details.append(DetailSection(sectionTitle: .continent, sectionInfo: continent))
-        }
-        
-        details.append(DetailSection(sectionTitle: .population, sectionInfo: String(country.population)))
-        
-        if let borders = country.borders {
-            details.append(DetailSection(sectionTitle: .borders, sectionInfo: borders.joined(separator: " ")))
-        }
-        
-        details.append(DetailSection(sectionTitle: .area, sectionInfo: String(country.area)))
-        
-        if let capital = country.capital?.first {
-            details.append(DetailSection(sectionTitle: .capital, sectionInfo: capital))
-        }
-        
-        detailSections = details
+    // MARK: Combine Bindings
+    func bind() {
+        subscribeCountryRecieved()
+        subscribeDetailSectionsRecieved()
+    }
+    
+    func subscribeCountryRecieved() {
+        viewModel?.countrySubject.sink { country in
+            self.setCountry(country: country)
+        }.store(in: &subscription)
+    }
+    
+    func subscribeDetailSectionsRecieved() {
+        viewModel?.detailSubject.sink { details in
+            self.detailSections = details
+        }.store(in: &subscription)
     }
 }
 
@@ -80,23 +81,38 @@ extension CountryDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func registerCell() {
         detailTableView.register(UINib(nibName: "SimpleDetailCell", bundle: nil), forCellReuseIdentifier: "SimpleDetailCell")
+        detailTableView.register(UINib(nibName: "BorderCell", bundle: nil), forCellReuseIdentifier: "BorderCell")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDetailCell", for: indexPath) as? SimpleDetailCell, let detailSections = detailSections else { return UITableViewCell() }
+        guard let detailSections = detailSections else { return UITableViewCell() }
+        switch detailSections[indexPath.row].sectionTitle {
+        case .borders:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BorderCell", for: indexPath) as? BorderCell
+            else { return UITableViewCell() }
+            cell.borders = detailSections[indexPath.row].borders
+            cell.configureCell(detailSection: detailSections[indexPath.row])
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDetailCell", for: indexPath) as? SimpleDetailCell
+            else { return UITableViewCell() }
+            cell.configureCell(detailSection: detailSections[indexPath.row])
+            return cell
+        }
         
-        cell.configureCell(detailSection: detailSections[indexPath.row])
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return detailSections?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let sections = detailSections, sections[indexPath.row].sectionTitle == .borders {
-            // Handle showing info
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let sections = detailSections else { return UITableView.automaticDimension }
+        switch sections[indexPath.row].sectionTitle {
+        case .borders:
+            return 270
+        default:
+            return 100
         }
     }
 }

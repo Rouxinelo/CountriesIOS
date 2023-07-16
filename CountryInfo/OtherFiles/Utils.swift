@@ -23,3 +23,7 @@ func formatPopulation(population: Double) -> String {
         return String(population)
     }
 }
+
+func formatArea(area: Double) -> String {
+    return "\(String(Int(area))) km\("\u{00B2}")"
+}
