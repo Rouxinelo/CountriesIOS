@@ -13,7 +13,7 @@ protocol CountryMenuViewModelProtocol {
     func getCountryData()
     func textDidChange(text: String)
     func goBack(navigationController: UINavigationController)
-    func getBorders(country: CountryModel, countries: [CountryModel]) -> [String : String]
+    func getBorders(country: CountryModel) -> [String : String]
     func getRepresentableFromModel(borders: [String : String], country: CountryModel)
     var subject: PassthroughSubject<FilteredCountries, Never> { get }
     var mappingSubject: PassthroughSubject<CountryRepresentable, Never> { get }
@@ -47,11 +47,11 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
     }
     
     func filterByContinent(countries: [CountryModel]) -> FilteredCountries {
-        var continents: [String] = []
+        var continents = Set<String>()
         var orderedCountries: [[CountryModel]] = []
         for country in countries {
-            if let continent = country.continents.first, !continents.contains(continent) {
-                continents.append(continent)
+            if let continent = country.continents.first {
+                continents.insert(continent)
             }
         }
         for continent in continents {
@@ -59,7 +59,7 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
             orderedCountries.append(country.sorted { $0.name.common < $1.name.common })
         }
         
-        return FilteredCountries(countriesPerContinent: orderedCountries, continent: continents)
+        return FilteredCountries(countriesPerContinent: orderedCountries, continent: Array(continents))
     }
     
     func textDidChange(text: String) {
@@ -87,18 +87,10 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
         coordinator.goBack(navigationController: navigationController)
     }
     
-    func getBorders(country: CountryModel, countries: [CountryModel]) -> [String : String] {
-        var dict: [String : String] = [:]
-        
-        if let borders = country.borders {
-            for border in borders {
-                if let borderCountry = countries.first(where: { $0.cca3 == border }) {
-                    dict[borderCountry.name.common] = borderCountry.flags.png
-                }
-            }
-        }
-
-        return dict
+    func getBorders(country: CountryModel) -> [String : String] {
+        guard let countries = countries, let borders = country.borders else { return [:] }
+        let validBorders = countries.countriesPerContinent.flatMap({$0}).filter {borders.contains($0.cca3)}
+        return validBorders.reduce(into: [:], {$0[$1.name.common] = $1.flags.png})
     }
     
     func getRepresentableFromModel(borders: [String : String], country: CountryModel) {

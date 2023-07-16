@@ -201,8 +201,7 @@ extension CountryMenuViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let countries = countries else { return }
-        let borders = viewModel?.getBorders(country: countries.countriesPerContinent[indexPath.section][indexPath.row],
-                                            countries: countries.countriesPerContinent.flatMap {$0})
+        let borders = viewModel?.getBorders(country: countries.countriesPerContinent[indexPath.section][indexPath.row])
         viewModel?.getRepresentableFromModel(borders: borders ?? [:],
                                              country: countries.countriesPerContinent[indexPath.section][indexPath.row])
     }

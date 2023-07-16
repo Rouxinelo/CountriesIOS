@@ -81,31 +81,36 @@ extension CountryDetailViewController: UITableViewDataSource, UITableViewDelegat
     
     func registerCell() {
         detailTableView.register(UINib(nibName: "SimpleDetailCell", bundle: nil), forCellReuseIdentifier: "SimpleDetailCell")
+        detailTableView.register(UINib(nibName: "BorderCell", bundle: nil), forCellReuseIdentifier: "BorderCell")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDetailCell", for: indexPath) as? SimpleDetailCell, let detailSections = detailSections else { return UITableViewCell() }
+        guard let detailSections = detailSections else { return UITableViewCell() }
+        switch detailSections[indexPath.row].sectionTitle {
+        case .borders:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "BorderCell", for: indexPath) as? BorderCell
+            else { return UITableViewCell() }
+            cell.borders = detailSections[indexPath.row].borders
+            cell.configureCell(detailSection: detailSections[indexPath.row])
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "SimpleDetailCell", for: indexPath) as? SimpleDetailCell
+            else { return UITableViewCell() }
+            cell.configureCell(detailSection: detailSections[indexPath.row])
+            return cell
+        }
         
-        cell.configureCell(detailSection: detailSections[indexPath.row])
-        
-        return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return detailSections?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let sections = detailSections, sections[indexPath.row].sectionTitle == .borders {
-            // Handle showing info
-        }
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let sections = detailSections else { return UITableView.automaticDimension }
         switch sections[indexPath.row].sectionTitle {
         case .borders:
-            return 1000
+            return 200
         default:
             return 100
         }

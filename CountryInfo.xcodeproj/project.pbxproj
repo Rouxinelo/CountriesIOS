@@ -41,6 +41,10 @@
 		6BB9937029CE4D3300755FA3 /* CountryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BB9936E29CE4D3300755FA3 /* CountryCell.xib */; };
 		6BFEDA8C2A5A169300C23A8A /* CountryDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEDA8B2A5A169300C23A8A /* CountryDetailViewModel.swift */; };
 		6BFEDA8E2A6329F000C23A8A /* CountryRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEDA8D2A6329F000C23A8A /* CountryRepresentable.swift */; };
+		6BFEDA932A633A9F00C23A8A /* BorderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEDA912A633A9F00C23A8A /* BorderCell.swift */; };
+		6BFEDA942A633A9F00C23A8A /* BorderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BFEDA922A633A9F00C23A8A /* BorderCell.xib */; };
+		6BFEDA972A633D2A00C23A8A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFEDA952A633D2A00C23A8A /* CollectionViewCell.swift */; };
+		6BFEDA982A633D2A00C23A8A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6BFEDA962A633D2A00C23A8A /* CollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +103,10 @@
 		6BB9936E29CE4D3300755FA3 /* CountryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountryCell.xib; sourceTree = "<group>"; };
 		6BFEDA8B2A5A169300C23A8A /* CountryDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailViewModel.swift; sourceTree = "<group>"; };
 		6BFEDA8D2A6329F000C23A8A /* CountryRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryRepresentable.swift; sourceTree = "<group>"; };
+		6BFEDA912A633A9F00C23A8A /* BorderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderCell.swift; sourceTree = "<group>"; };
+		6BFEDA922A633A9F00C23A8A /* BorderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BorderCell.xib; sourceTree = "<group>"; };
+		6BFEDA952A633D2A00C23A8A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		6BFEDA962A633D2A00C23A8A /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,8 +185,8 @@
 		6B8EA9B029E573CF0048A88A /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
-				6B8EA9B129E573FB0048A88A /* SimpleDetailCell.swift */,
-				6B8EA9B229E573FB0048A88A /* SimpleDetailCell.xib */,
+				6BFEDA902A633A7A00C23A8A /* BorderCell */,
+				6BFEDA8F2A633A6B00C23A8A /* SimpleDetail */,
 			);
 			path = TableCell;
 			sourceTree = "<group>";
@@ -346,6 +354,34 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		6BFEDA8F2A633A6B00C23A8A /* SimpleDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6B8EA9B129E573FB0048A88A /* SimpleDetailCell.swift */,
+				6B8EA9B229E573FB0048A88A /* SimpleDetailCell.xib */,
+			);
+			path = SimpleDetail;
+			sourceTree = "<group>";
+		};
+		6BFEDA902A633A7A00C23A8A /* BorderCell */ = {
+			isa = PBXGroup;
+			children = (
+				6BFEDA992A633EC400C23A8A /* CollectionViewCell */,
+				6BFEDA912A633A9F00C23A8A /* BorderCell.swift */,
+				6BFEDA922A633A9F00C23A8A /* BorderCell.xib */,
+			);
+			path = BorderCell;
+			sourceTree = "<group>";
+		};
+		6BFEDA992A633EC400C23A8A /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6BFEDA952A633D2A00C23A8A /* CollectionViewCell.swift */,
+				6BFEDA962A633D2A00C23A8A /* CollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -455,8 +491,10 @@
 				6BB5EA9929D0953400C8FD97 /* CountryDetailViewController.xib in Resources */,
 				6BA79B4F29C3CC140010DB6C /* MainMenuViewController.xib in Resources */,
 				6B085AC329C51CF000A7A59A /* CountryMenuViewController.xib in Resources */,
+				6BFEDA942A633A9F00C23A8A /* BorderCell.xib in Resources */,
 				6BA79B2329C3C8CF0010DB6C /* Assets.xcassets in Resources */,
 				6B8EA9B429E573FB0048A88A /* SimpleDetailCell.xib in Resources */,
+				6BFEDA982A633D2A00C23A8A /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,12 +527,14 @@
 				6BFEDA8E2A6329F000C23A8A /* CountryRepresentable.swift in Sources */,
 				6BA79B5129C3CC340010DB6C /* MainMenuViewModel.swift in Sources */,
 				6BB9936F29CE4D3300755FA3 /* CountryCell.swift in Sources */,
+				6BFEDA972A633D2A00C23A8A /* CollectionViewCell.swift in Sources */,
 				6BB5EA9429D0945200C8FD97 /* CountryDetailCoordinator.swift in Sources */,
 				6B5ED14829CE6AEC00613CF2 /* CountryMenuNetworkLayer.swift in Sources */,
 				6BB5EA8B29CFBB2A00C8FD97 /* UIImageView.swift in Sources */,
 				6BB5EA8D29D05D4D00C8FD97 /* Utils.swift in Sources */,
 				6BA79B5329C3CCDE0010DB6C /* MainMenuCoordinator.swift in Sources */,
 				6B8EA9B329E573FB0048A88A /* SimpleDetailCell.swift in Sources */,
+				6BFEDA932A633A9F00C23A8A /* BorderCell.swift in Sources */,
 				6BA79B4E29C3CC140010DB6C /* MainMenuViewController.swift in Sources */,
 				6BA79B1A29C3C8CF0010DB6C /* AppDelegate.swift in Sources */,
 				6BA79B1C29C3C8CF0010DB6C /* SceneDelegate.swift in Sources */,

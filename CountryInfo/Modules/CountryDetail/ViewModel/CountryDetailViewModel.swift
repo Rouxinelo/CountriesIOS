@@ -40,9 +40,9 @@ class CountryDetailViewModel: CountryDetailViewModelProtocol {
             details.append(DetailSection(sectionTitle: .continent, sectionInfo: continent))
         }
         
-        details.append(DetailSection(sectionTitle: .population, sectionInfo: String(countryInfo.population)))
+        details.append(DetailSection(sectionTitle: .population, sectionInfo: formatPopulation(population: countryInfo.population)))
         
-        details.append(DetailSection(sectionTitle: .area, sectionInfo: String(countryInfo.area)))
+        details.append(DetailSection(sectionTitle: .area, sectionInfo: formatArea(area: country.area)))
         
         if let capital = countryInfo.capital?.first {
             details.append(DetailSection(sectionTitle: .capital, sectionInfo: capital))
