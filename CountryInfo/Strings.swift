@@ -8,7 +8,7 @@
 import Foundation
 
 struct AboutAppStrings {
-    static let description = "This is a small app about contries.\nIt was made mainly to experiment with Swift and Combine."
+    static let description = "This is a small app about countries.\nIt was made mainly to experiment with Swift and Combine."
 }
 
 struct WebviewLinks {
