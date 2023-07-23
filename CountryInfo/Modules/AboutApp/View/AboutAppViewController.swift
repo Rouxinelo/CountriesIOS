@@ -62,11 +62,14 @@ class AboutAppViewController: UIViewController {
     @objc func goToWebview(_ sender: UIButton) {
         switch sender.tag {
         case 1:
-            print("goToLinkedin")
+            let vc = WebViewCoordinator(socialType: .linkedin).start()
+            self.navigationController?.pushViewController(vc, animated: true)
         case 2:
-            print("goToGithub")
+            let vc = WebViewCoordinator(socialType: .github).start()
+            self.navigationController?.pushViewController(vc, animated: true)
         case 3:
-            print("goToInstagram")
+            let vc = WebViewCoordinator(socialType: .instagram).start()
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             print("goNowhere")
         }
