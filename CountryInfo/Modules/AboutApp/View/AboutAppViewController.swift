@@ -16,6 +16,9 @@ class AboutAppViewController: UIViewController {
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var socialsLabel: UILabel!
     
+    // MARK: Variables
+    var viewModel: AboutAppViewModelProtocol?
+    
     // MARK: SocialButtonsConfiguration
     
     func getSocialButton(tag: Int) -> UIButton {
@@ -60,19 +63,8 @@ class AboutAppViewController: UIViewController {
     }
     
     @objc func goToWebview(_ sender: UIButton) {
-        switch sender.tag {
-        case 1:
-            let vc = WebViewCoordinator(socialType: .linkedin).start()
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 2:
-            let vc = WebViewCoordinator(socialType: .github).start()
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 3:
-            let vc = WebViewCoordinator(socialType: .instagram).start()
-            self.navigationController?.pushViewController(vc, animated: true)
-        default:
-            print("goNowhere")
-        }
+        guard let navigationController = navigationController else { return }
+        viewModel?.goToWebview(tag: sender.tag, navigationController: navigationController)
     }
     
     func setStyle() {
