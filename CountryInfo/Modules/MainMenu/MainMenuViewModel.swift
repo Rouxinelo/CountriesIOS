@@ -20,7 +20,7 @@ class MainMenuViewModel: MainMenuViewModelProtocol {
     }
     
     func goToAboutScreen(navigationController: UINavigationController) {
+        let vc = AboutAppCoordinator().start()
+        navigationController.pushViewController(vc, animated: true)
     }
-    
-    
 }

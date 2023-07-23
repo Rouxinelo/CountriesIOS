@@ -29,7 +29,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sL5-wE-yRh">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noFlag" translatesAutoresizingMaskIntoConstraints="NO" id="sL5-wE-yRh">
                                         <rect key="frame" x="17" y="34" width="150" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="8c2-7f-f0S"/>
@@ -69,4 +69,7 @@
             <point key="canvasLocation" x="-87" y="20"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="noFlag" width="512" height="512"/>
+    </resources>
 </document>
