@@ -33,6 +33,7 @@ class CountryDetailViewModel: CountryDetailViewModelProtocol {
     
     func parseDetailSections(countryInfo: CountryRepresentable) {
         var details: [DetailSection?] = []
+        details.append(DetailSection(sectionTitle: .location, sectionInfo: "", coordinates: [countryInfo.latitude, countryInfo.longitude]))
         details.append(getDetailSection(sectionTitle: .currency, sectionInfo: countryInfo.currencies?.first?.value.name))
         details.append(getDetailSection(sectionTitle: .continent, sectionInfo: countryInfo.continents.first))
         details.append(getDetailSection(sectionTitle: .population, sectionInfo: formatPopulation(population: countryInfo.population)))

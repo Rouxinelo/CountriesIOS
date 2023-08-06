@@ -8,6 +8,7 @@
 import Foundation
 
 enum Section {
+    case location
     case currency
     case continent
     case population
@@ -19,6 +20,8 @@ enum Section {
 extension Section {
     var title: String {
         switch self {
+        case .location:
+            return "Location:"
         case .area:
             return "Area:"
         case .borders:
@@ -38,4 +41,5 @@ struct DetailSection {
     var sectionTitle: Section
     var sectionInfo: String
     var borders: [String: String]?
+    var coordinates: [Double]?
 }

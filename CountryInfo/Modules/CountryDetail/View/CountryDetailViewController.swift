@@ -82,11 +82,17 @@ extension CountryDetailViewController: UITableViewDataSource, UITableViewDelegat
     func registerCell() {
         detailTableView.register(UINib(nibName: "SimpleDetailCell", bundle: nil), forCellReuseIdentifier: "SimpleDetailCell")
         detailTableView.register(UINib(nibName: "BorderCell", bundle: nil), forCellReuseIdentifier: "BorderCell")
+        detailTableView.register(UINib(nibName: "MapCell", bundle: nil), forCellReuseIdentifier: "MapCell")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let detailSections = detailSections else { return UITableViewCell() }
         switch detailSections[indexPath.row].sectionTitle {
+        case .location:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell", for: indexPath) as? MapCell
+            else { return UITableViewCell() }
+            cell.setCoordinates(latitude: detailSections[indexPath.row].coordinates?.first, longitude: detailSections[indexPath.row].coordinates?.last)
+            return cell
         case .borders:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "BorderCell", for: indexPath) as? BorderCell
             else { return UITableViewCell() }
@@ -111,6 +117,8 @@ extension CountryDetailViewController: UITableViewDataSource, UITableViewDelegat
         switch sections[indexPath.row].sectionTitle {
         case .borders:
             return 270
+        case .location:
+            return UITableView.automaticDimension
         default:
             return 100
         }

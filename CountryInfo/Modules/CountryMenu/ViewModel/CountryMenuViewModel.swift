@@ -99,6 +99,12 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
     }
     
     func getRepresentableFromModel(borders: [String : String], country: CountryModel) {
+        var latitude: Double = 0
+        var longitude: Double = 0
+        if let lat = country.latlng.first, let lng = country.latlng.last {
+            latitude = lat
+            longitude = lng
+        }
         let countryRepresentable = CountryRepresentable(name: country.name,
                                                         currencies: country.currencies,
                                                         continents: country.continents,
@@ -106,7 +112,9 @@ class CountryMenuViewModel: CountryMenuViewModelProtocol {
                                                         borders: borders,
                                                         area: country.area,
                                                         capital: country.capital,
-                                                        flags: country.flags)
+                                                        flags: country.flags,
+                                                        latitude: latitude ,
+                                                        longitude: longitude)
         mappingSubject.send(countryRepresentable)
     }
 }
