@@ -16,5 +16,7 @@ struct CountryRepresentable {
     var area: Double
     var capital: [String]?
     var flags: Flag
+    var latitude: Double
+    var longitude: Double
 }
 

@@ -16,9 +16,19 @@
 		6B8EA9B329E573FB0048A88A /* SimpleDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EA9B129E573FB0048A88A /* SimpleDetailCell.swift */; };
 		6B8EA9B429E573FB0048A88A /* SimpleDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B8EA9B229E573FB0048A88A /* SimpleDetailCell.xib */; };
 		6B8EA9B829E5763F0048A88A /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EA9B729E5763F0048A88A /* DetailSection.swift */; };
+		6B95CD322A6D43CC00EE4DC8 /* AboutAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95CD312A6D43CC00EE4DC8 /* AboutAppCoordinator.swift */; };
+		6B95CD362A6D460600EE4DC8 /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95CD342A6D460600EE4DC8 /* AboutAppViewController.swift */; };
+		6B95CD372A6D460600EE4DC8 /* AboutAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B95CD352A6D460600EE4DC8 /* AboutAppViewController.xib */; };
+		6B95CD3B2A6D501800EE4DC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B95CD3A2A6D501800EE4DC8 /* Assets.xcassets */; };
+		6B95CD422A6D92EE00EE4DC8 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95CD412A6D92EE00EE4DC8 /* Strings.swift */; };
+		6B95CD462A6D95DB00EE4DC8 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95CD442A6D95DB00EE4DC8 /* WebViewViewController.swift */; };
+		6B95CD472A6D95DB00EE4DC8 /* WebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B95CD452A6D95DB00EE4DC8 /* WebViewViewController.xib */; };
+		6B95CD4A2A6D970600EE4DC8 /* WebViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95CD492A6D970600EE4DC8 /* WebViewCoordinator.swift */; };
+		6B95CD4D2A6DA0FE00EE4DC8 /* AboutAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95CD4C2A6DA0FE00EE4DC8 /* AboutAppViewModel.swift */; };
+		6B95CD512A80137A00EE4DC8 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B95CD4F2A80137A00EE4DC8 /* MapCell.swift */; };
+		6B95CD522A80137A00EE4DC8 /* MapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B95CD502A80137A00EE4DC8 /* MapCell.xib */; };
 		6BA79B1A29C3C8CF0010DB6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B1929C3C8CF0010DB6C /* AppDelegate.swift */; };
 		6BA79B1C29C3C8CF0010DB6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B1B29C3C8CF0010DB6C /* SceneDelegate.swift */; };
-		6BA79B2329C3C8CF0010DB6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BA79B2229C3C8CF0010DB6C /* Assets.xcassets */; };
 		6BA79B2629C3C8CF0010DB6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BA79B2429C3C8CF0010DB6C /* LaunchScreen.storyboard */; };
 		6BA79B3129C3C8CF0010DB6C /* CountryInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B3029C3C8CF0010DB6C /* CountryInfoTests.swift */; };
 		6BA79B3B29C3C8CF0010DB6C /* CountryInfoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA79B3A29C3C8CF0010DB6C /* CountryInfoUITests.swift */; };
@@ -74,10 +84,20 @@
 		6B8EA9B129E573FB0048A88A /* SimpleDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleDetailCell.swift; sourceTree = "<group>"; };
 		6B8EA9B229E573FB0048A88A /* SimpleDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleDetailCell.xib; sourceTree = "<group>"; };
 		6B8EA9B729E5763F0048A88A /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
+		6B95CD312A6D43CC00EE4DC8 /* AboutAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppCoordinator.swift; sourceTree = "<group>"; };
+		6B95CD342A6D460600EE4DC8 /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
+		6B95CD352A6D460600EE4DC8 /* AboutAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutAppViewController.xib; sourceTree = "<group>"; };
+		6B95CD3A2A6D501800EE4DC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = CountryInfo/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		6B95CD412A6D92EE00EE4DC8 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		6B95CD442A6D95DB00EE4DC8 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		6B95CD452A6D95DB00EE4DC8 /* WebViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewViewController.xib; sourceTree = "<group>"; };
+		6B95CD492A6D970600EE4DC8 /* WebViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewCoordinator.swift; sourceTree = "<group>"; };
+		6B95CD4C2A6DA0FE00EE4DC8 /* AboutAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewModel.swift; sourceTree = "<group>"; };
+		6B95CD4F2A80137A00EE4DC8 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		6B95CD502A80137A00EE4DC8 /* MapCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapCell.xib; sourceTree = "<group>"; };
 		6BA79B1629C3C8CF0010DB6C /* CountryInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BA79B1929C3C8CF0010DB6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BA79B1B29C3C8CF0010DB6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6BA79B2229C3C8CF0010DB6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BA79B2529C3C8CF0010DB6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BA79B2729C3C8CF0010DB6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6BA79B2C29C3C8CF0010DB6C /* CountryInfoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryInfoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -185,6 +205,7 @@
 		6B8EA9B029E573CF0048A88A /* TableCell */ = {
 			isa = PBXGroup;
 			children = (
+				6B95CD4E2A80134A00EE4DC8 /* MapCell */,
 				6BFEDA902A633A7A00C23A8A /* BorderCell */,
 				6BFEDA8F2A633A6B00C23A8A /* SimpleDetail */,
 			);
@@ -197,6 +218,60 @@
 				6B8EA9B729E5763F0048A88A /* DetailSection.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6B95CD302A6D439100EE4DC8 /* AboutApp */ = {
+			isa = PBXGroup;
+			children = (
+				6B95CD4B2A6DA0ED00EE4DC8 /* ViewModel */,
+				6B95CD332A6D45DB00EE4DC8 /* View */,
+				6B95CD312A6D43CC00EE4DC8 /* AboutAppCoordinator.swift */,
+			);
+			path = AboutApp;
+			sourceTree = "<group>";
+		};
+		6B95CD332A6D45DB00EE4DC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6B95CD342A6D460600EE4DC8 /* AboutAppViewController.swift */,
+				6B95CD352A6D460600EE4DC8 /* AboutAppViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6B95CD432A6D95C500EE4DC8 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				6B95CD482A6D96DD00EE4DC8 /* View */,
+				6B95CD492A6D970600EE4DC8 /* WebViewCoordinator.swift */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		6B95CD482A6D96DD00EE4DC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6B95CD442A6D95DB00EE4DC8 /* WebViewViewController.swift */,
+				6B95CD452A6D95DB00EE4DC8 /* WebViewViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6B95CD4B2A6DA0ED00EE4DC8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6B95CD4C2A6DA0FE00EE4DC8 /* AboutAppViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6B95CD4E2A80134A00EE4DC8 /* MapCell */ = {
+			isa = PBXGroup;
+			children = (
+				6B95CD4F2A80137A00EE4DC8 /* MapCell.swift */,
+				6B95CD502A80137A00EE4DC8 /* MapCell.xib */,
+			);
+			path = MapCell;
 			sourceTree = "<group>";
 		};
 		6BA79B0D29C3C8CF0010DB6C = {
@@ -222,14 +297,15 @@
 		6BA79B1829C3C8CF0010DB6C /* CountryInfo */ = {
 			isa = PBXGroup;
 			children = (
+				6B95CD3A2A6D501800EE4DC8 /* Assets.xcassets */,
 				6BB5EA9129D093FA00C8FD97 /* OtherFiles */,
 				6BB5EA9029D093E700C8FD97 /* Delegates */,
 				6BA79B5729C3D0710010DB6C /* Extensions */,
 				6BA79B5429C3CE010010DB6C /* Protocols */,
 				6BA79B4929C3CBCF0010DB6C /* Modules */,
-				6BA79B2229C3C8CF0010DB6C /* Assets.xcassets */,
 				6BA79B2429C3C8CF0010DB6C /* LaunchScreen.storyboard */,
 				6BA79B2729C3C8CF0010DB6C /* Info.plist */,
+				6B95CD412A6D92EE00EE4DC8 /* Strings.swift */,
 			);
 			path = CountryInfo;
 			sourceTree = "<group>";
@@ -254,6 +330,8 @@
 		6BA79B4929C3CBCF0010DB6C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6B95CD432A6D95C500EE4DC8 /* WebView */,
+				6B95CD302A6D439100EE4DC8 /* AboutApp */,
 				6BB5EA9229D0940D00C8FD97 /* CountryDetail */,
 				6B085ABE29C51CB100A7A59A /* CountryMenu */,
 				6BA79B4A29C3CBDC0010DB6C /* MainMenu */,
@@ -488,12 +566,15 @@
 			files = (
 				6BB9937029CE4D3300755FA3 /* CountryCell.xib in Resources */,
 				6BA79B2629C3C8CF0010DB6C /* LaunchScreen.storyboard in Resources */,
+				6B95CD522A80137A00EE4DC8 /* MapCell.xib in Resources */,
 				6BB5EA9929D0953400C8FD97 /* CountryDetailViewController.xib in Resources */,
 				6BA79B4F29C3CC140010DB6C /* MainMenuViewController.xib in Resources */,
+				6B95CD472A6D95DB00EE4DC8 /* WebViewViewController.xib in Resources */,
+				6B95CD3B2A6D501800EE4DC8 /* Assets.xcassets in Resources */,
 				6B085AC329C51CF000A7A59A /* CountryMenuViewController.xib in Resources */,
 				6BFEDA942A633A9F00C23A8A /* BorderCell.xib in Resources */,
-				6BA79B2329C3C8CF0010DB6C /* Assets.xcassets in Resources */,
 				6B8EA9B429E573FB0048A88A /* SimpleDetailCell.xib in Resources */,
+				6B95CD372A6D460600EE4DC8 /* AboutAppViewController.xib in Resources */,
 				6BFEDA982A633D2A00C23A8A /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,20 +610,27 @@
 				6BB9936F29CE4D3300755FA3 /* CountryCell.swift in Sources */,
 				6BFEDA972A633D2A00C23A8A /* CollectionViewCell.swift in Sources */,
 				6BB5EA9429D0945200C8FD97 /* CountryDetailCoordinator.swift in Sources */,
+				6B95CD462A6D95DB00EE4DC8 /* WebViewViewController.swift in Sources */,
 				6B5ED14829CE6AEC00613CF2 /* CountryMenuNetworkLayer.swift in Sources */,
 				6BB5EA8B29CFBB2A00C8FD97 /* UIImageView.swift in Sources */,
 				6BB5EA8D29D05D4D00C8FD97 /* Utils.swift in Sources */,
 				6BA79B5329C3CCDE0010DB6C /* MainMenuCoordinator.swift in Sources */,
+				6B95CD362A6D460600EE4DC8 /* AboutAppViewController.swift in Sources */,
 				6B8EA9B329E573FB0048A88A /* SimpleDetailCell.swift in Sources */,
+				6B95CD512A80137A00EE4DC8 /* MapCell.swift in Sources */,
 				6BFEDA932A633A9F00C23A8A /* BorderCell.swift in Sources */,
 				6BA79B4E29C3CC140010DB6C /* MainMenuViewController.swift in Sources */,
 				6BA79B1A29C3C8CF0010DB6C /* AppDelegate.swift in Sources */,
 				6BA79B1C29C3C8CF0010DB6C /* SceneDelegate.swift in Sources */,
 				6B085AC529C51DA800A7A59A /* CountryMenuCoordinator.swift in Sources */,
 				6B5ED14229CE645E00613CF2 /* CountryMenuViewModel.swift in Sources */,
+				6B95CD422A6D92EE00EE4DC8 /* Strings.swift in Sources */,
 				6B8EA9B829E5763F0048A88A /* DetailSection.swift in Sources */,
 				6BB5EA8F29D060C000C8FD97 /* Double.swift in Sources */,
+				6B95CD4D2A6DA0FE00EE4DC8 /* AboutAppViewModel.swift in Sources */,
 				6BB5EA9829D0953400C8FD97 /* CountryDetailViewController.swift in Sources */,
+				6B95CD4A2A6D970600EE4DC8 /* WebViewCoordinator.swift in Sources */,
+				6B95CD322A6D43CC00EE4DC8 /* AboutAppCoordinator.swift in Sources */,
 				6BB9936B29CE49AA00755FA3 /* UISearchBar.swift in Sources */,
 				6BFEDA8C2A5A169300C23A8A /* CountryDetailViewModel.swift in Sources */,
 			);
@@ -718,6 +806,7 @@
 				INFOPLIST_FILE = CountryInfo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -745,6 +834,7 @@
 				INFOPLIST_FILE = CountryInfo/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
