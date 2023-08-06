@@ -39,7 +39,7 @@ class CountryDetailViewModel: CountryDetailViewModelProtocol {
         details.append(getDetailSection(sectionTitle: .population, sectionInfo: formatPopulation(population: countryInfo.population)))
         details.append(getDetailSection(sectionTitle: .area, sectionInfo: formatArea(area: country.area)))
         details.append(getDetailSection(sectionTitle: .capital, sectionInfo: countryInfo.capital?.first))
-        if let borders = countryInfo.borders {
+        if let borders = countryInfo.borders, !borders.isEmpty {
             details.append(DetailSection(sectionTitle: .borders, sectionInfo: "", borders: borders))
         }
         detailSubject.send(details.compactMap{$0})
